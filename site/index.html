@@ -161,7 +161,11 @@
           document.getElementById("mainTable").rows.length - 1
         );
         for (var i = 0; i < document.getElementById("mainTable").rows[0].children.length; i++) {
-          newRow.insertCell();
+          var newCell = newRow.insertCell();
+          newCell.innerHTML = "<input type='text' placeholder='#70E2FF' />"
+          newCell.children[0].addEventListener("change", function (event) {
+            event.target.parentElement.style.background = event.target.value;
+          });
         }
       }
       function addCol() {
