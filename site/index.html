@@ -173,9 +173,18 @@
         newRow.insertCell();
       }
       function addCol() {
-        for (var i = 0; i < document.getElementById("mainTable").rows.length - 1; i++) {
+        /* code for JUST row 0 */
+        var newCell = document.getElementById("mainTable").rows[0].insertCell(
+          document.getElementById("mainTable").rows[0].children.length - 1
+        )
+        newCell.innerHTML = "<input type='text' placeholder='#70E2FF' />";
+        newCell.children[0].addEventListener("change", function (event) {
+          event.target.parentElement.style.background = event.target.value;
+        });
+        /* start at 1 (exclude row 0) because row 0's code is above (its different than the other rows) */
+        for (var i = 1; i < document.getElementById("mainTable").rows.length - 1; i++) {
           var newCell = document.getElementById("mainTable").rows[i].insertCell(
-            document.getElementById("mainTable").rows[0].children.length - 1
+            document.getElementById("mainTable").rows[0].children.length - 2
           )
           /* same as row */
           newCell.innerHTML = "<input type='text' placeholder='#70E2FF' />"
@@ -184,11 +193,6 @@
           });
           /* same as row end */
         }
-        /* insert empty last cell, after other cells from the for loop */
-        /* uses ....rows[....rows.length - 1]... because the if condition has < AND - 1, so this needs just - 1 to get the last row */
-        document.getElementById("mainTable").rows[document.getElementById("mainTable").rows.length - 1].insertCell(
-          document.getElementById("mainTable").rows[0].children.length - 1
-        )
       }
     </script>
   </body>
