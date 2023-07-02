@@ -125,7 +125,7 @@
             <tbody>
               <tr>
                 <td>
-                  color thingy
+                  <input type='text' placeholder='#70E2FF' id="mainTableCell" />
                 </td>
                 <td>
                   <button onclick="addCol()">Add Column</button>
@@ -156,6 +156,10 @@
     </script>
     <script src="https://design.ehan.dev/js/header.js"></script>
     <script>
+      /* add eventlistener to first/original cell */
+      document.getElementById("mainTableCell").addEventListener("change", function (event) {
+        event.target.parentElement.style.background = event.target.value;
+      });
       function addRow() {
         var newRow = document.getElementById("mainTable").insertRow(
           document.getElementById("mainTable").rows.length - 1
@@ -194,7 +198,9 @@
           /* same as row end */
         }
         /* insert empty cell at last row */
-        document.getElementById("mainTable").rows[document.getElementById("mainTable").rows.length - 1].insertCell()
+        document.getElementById("mainTable").rows[document.getElementById("mainTable").rows.length - 1].insertCell(
+          /* where the cell is inserted doesn't matter cause all cells in this row, other than the first, are empty */
+        )
       }
     </script>
   </body>
