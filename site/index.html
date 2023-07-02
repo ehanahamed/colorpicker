@@ -128,12 +128,12 @@
                   color thingy
                 </td>
                 <td>
-                  <button>Add Column</button>
+                  <button onclick="addCol()">Add Column</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button>Add Row</button>
+                  <button onclick="addRow()">Add Row</button>
                 </td>
                 <td>
                 </td>
@@ -155,5 +155,20 @@
       document.getElementById("noscript").style.display = "none";
     </script>
     <script src="https://design.ehan.dev/js/header.js"></script>
+    <script>
+      function addRow() {
+        document.getElementById("mainTable").insertRow(
+          document.getElementById("mainTable").rows.length - 1
+        );
+      }
+      function addCol() {
+        // subtract 1 because .length starts at 1 instead of 0
+        for (var i = 0; i < document.getElementById("mainTable").rows.length - 1; i++) {
+          document.getElementById("mainTable").rows[i].insertCell(
+            document.getElementById("mainTable").rows[0].length - 1
+          )
+        }
+      }
+    </script>
   </body>
 </html>
