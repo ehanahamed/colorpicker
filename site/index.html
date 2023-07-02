@@ -160,15 +160,15 @@
         var newRow = document.getElementById("mainTable").insertRow(
           document.getElementById("mainTable").rows.length - 1
         );
-        for (var i = 0; i < document.getElementById("mainTable").rows[0].children.length; i++) {
+        for (var i = 0; i < document.getElementById("mainTable").rows[0].children.length - 1; i++) {
           var newCell = newRow.insertCell();
-          if (newCell.index < document.getElementById("mainTable").rows[0].children.length - 1) {
-            newCell.innerHTML = "<input type='text' placeholder='#70E2FF' />"
-            newCell.children[0].addEventListener("change", function (event) {
-              event.target.parentElement.style.background = event.target.value;
-            });
-          }
+          newCell.innerHTML = "<input type='text' placeholder='#70E2FF' />"
+          newCell.children[0].addEventListener("change", function (event) {
+            event.target.parentElement.style.background = event.target.value;
+          });
         }
+        /* insert empty last cell, after other cells from the for loop */
+        newRow.insertCell();
       }
       function addCol() {
         for (var i = 0; i < document.getElementById("mainTable").rows.length; i++) {
